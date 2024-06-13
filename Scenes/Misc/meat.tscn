@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://cq1xxgj1k23wp"]
+
+[ext_resource type="Texture2D" uid="uid://cfhk4tqlrvis6" path="res://Assets/Misc/M_Spawn.png" id="1_efe2u"]
+[ext_resource type="Script" path="res://Scripts/heal_health.gd" id="2_ixpj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp3wg"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k65de"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31yha"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gr8b"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pospo"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyyis"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rctah"]
+atlas = ExtResource("1_efe2u")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80mxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp3wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k65de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31yha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gr8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pospo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyyis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rctah")
+}],
+"loop": false,
+"name": &"Spawn",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1uibq"]
+radius = 40.0
+
+[node name="Meat" type="AnimatedSprite2D"]
+position = Vector2(0, -33)
+sprite_frames = SubResource("SpriteFrames_80mxp")
+animation = &"Spawn"
+autoplay = "Spawn"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("2_ixpj0")
+healing_amount = 20.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 12)
+shape = SubResource("CircleShape2D_1uibq")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

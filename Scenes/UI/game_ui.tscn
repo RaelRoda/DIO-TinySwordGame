@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://bngvpql16mjdk"]
+
+[ext_resource type="Script" path="res://Scenes/UI/game_ui.gd" id="1_4aets"]
+[ext_resource type="Texture2D" uid="uid://cgmjucr4whfte" path="res://Assets/UI/Banners/Banner_Horizontal.png" id="2_w8gwg"]
+[ext_resource type="Texture2D" uid="uid://qp3tuao216co" path="res://Assets/Misc/M_Idle_(NoShadow).png" id="3_km4sr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f7k36"]
+texture = ExtResource("2_w8gwg")
+texture_margin_left = 31.0
+texture_margin_top = 16.0
+texture_margin_right = 30.0
+texture_margin_bottom = 29.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(33, 47, 126, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy5px"]
+atlas = ExtResource("3_km4sr")
+region = Rect2(40, 48, 56, 56)
+
+[sub_resource type="SystemFont" id="SystemFont_ffou4"]
+font_names = PackedStringArray("Cascadia Mono")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_brox4"]
+font = SubResource("SystemFont_ffou4")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_bn6n5"]
+font_names = PackedStringArray("Cascadia Mono")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fo0f"]
+font = SubResource("SystemFont_bn6n5")
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_4aets")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 20.0
+offset_right = -34.0
+offset_bottom = 102.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_f7k36")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_right = -3.0
+offset_bottom = 56.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_dy5px")
+
+[node name="MeatLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 50.0
+offset_bottom = 43.0
+grow_horizontal = 2
+text = "88"
+label_settings = SubResource("LabelSettings_brox4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_top = 10.0
+offset_right = 31.5
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "00:00"
+label_settings = SubResource("LabelSettings_6fo0f")
+horizontal_alignment = 1
+vertical_alignment = 1
